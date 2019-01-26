@@ -37,6 +37,7 @@
                  Margin="0, 40, 0, 10"
                  FontSize="20">
         </TextBox>
+
         <Label HorizontalContentAlignment="Center"
                Content="Login"
                Grid.Column="4"
@@ -45,14 +46,15 @@
                FontSize="20"
                Margin="0, 0, 0, 30">
         </Label>
-        <TextBox x:Name="passwordInput"
+
+        <PasswordBox x:Name="passwordInput"
                  Grid.Column="4"
                  Grid.Row="3"
                  Width="150"
                  Margin="0, 20, 0, 10"
                  FontSize="20">
+        </PasswordBox>
 
-        </TextBox>
         <Label HorizontalContentAlignment="Center"
                Content="Password"
                Grid.Column="4"
@@ -69,7 +71,7 @@
                 Grid.Row="5"
                 Width="150"
                 Margin="0, 20, 0, 20"
-                FontSize="20"/>
+                FontSize="20" Click="LoginBtnClick"/>
         <TextBlock HorizontalAlignment="Center"
                    Grid.Column="4"
                    Grid.Row="6" 

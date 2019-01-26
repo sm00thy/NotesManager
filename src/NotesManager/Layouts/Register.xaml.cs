@@ -24,5 +24,27 @@ namespace NotesManager.Layouts
         {
             InitializeComponent();
         }
+
+        private void RegisterButtonClick(object sender, RoutedEventArgs e)
+        {
+            ValidatePassword();
+        }
+
+        private void ValidatePassword()
+        {
+            if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
+            {
+                MessageBox.Show("Login or passowrd cannot be empty", "NotesManager");
+            }
+            else if (loginInput.Text.Length < 5 || passwordInput.Password.Length < 5)
+            {
+                MessageBox.Show("Password length must be above 5 characters", "NotesManager");
+            }
+            else
+            {
+                MessageBox.Show("Register succesful", "NotesManager");
+                NavigationService.GoBack();
+            }
+        }
     }
 }

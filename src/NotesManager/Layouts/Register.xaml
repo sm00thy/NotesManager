@@ -10,7 +10,66 @@
 
     <Grid>
 
-        <Label Content="Test" HorizontalAlignment="Left" Margin="279,194,0,0" VerticalAlignment="Top" FontSize="40"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="loginInput"
+                 Grid.Column="4"
+                 Grid.Row="1"
+                 Width="150"
+                 Margin="0, 40, 0, 10"
+                 FontSize="20">
+        </TextBox>
+        <Label HorizontalContentAlignment="Center"
+               Content="Login"
+               Grid.Column="4"
+               Grid.Row="2"
+               Width="150"
+               FontSize="20"
+               Margin="0, 0, 0, 30">
+        </Label>
+        <PasswordBox x:Name="passwordInput"
+                 Grid.Column="4"
+                 Grid.Row="3"
+                 Width="150"
+                 Margin="0, 20, 0, 10"
+                 FontSize="20">
+
+        </PasswordBox>
+        <Label HorizontalContentAlignment="Center"
+               Content="Password"
+               Grid.Column="4"
+               Grid.Row="4"
+               Width="150"
+               FontSize="20"
+               Margin="0, 0, 0, 50">
+
+        </Label>
+
+        <Button Content="Register"
+                x:Name="registerBtn"
+                Grid.Column="4"
+                Grid.Row="5"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="20"
+                Click="RegisterButtonClick"/>
     </Grid>
 </Page>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Filip\Desktop\NotesManager\src\NotesManager\App.xaml
-3-687499925
+4-1165665570
 
-11-2064160971
+12120204614
 131569487696
-Layouts\Login.xaml;Layouts\Register.xaml;MainWindow.xaml;
+Layouts\Login.xaml;Layouts\NoteList.xaml;Layouts\Register.xaml;MainWindow.xaml;
 
 False
 

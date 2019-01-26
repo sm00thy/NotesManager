@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace NotesManager.Layouts
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for NoteList.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class NoteList : Page
     {
-        public Login()
+        public NoteList()
         {
             InitializeComponent();
-        }
-
-        private void LoginBtnClick(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate()
         }
     }
 }
