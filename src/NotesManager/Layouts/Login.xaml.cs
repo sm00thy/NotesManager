@@ -27,7 +27,20 @@ namespace NotesManager.Layouts
 
         private void LoginBtnClick(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate()
+            ValidatePassword();
+        }
+
+        private void ValidatePassword()
+        {
+            if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
+            {
+                MessageBox.Show("Login or passowrd cannot be empty", "NotesManager");
+            }
+
+            else
+            {
+                NavigationService.Navigate(new NoteList());
+            }
         }
     }
 }
