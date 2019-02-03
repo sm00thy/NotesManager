@@ -3,18 +3,24 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:NotesManager.Layouts"
+      xmlns:local="clr-namespace:NotesManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="NoteList">
+      d:DesignHeight="600" d:DesignWidth="1080"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF" 
+      fw:AcrylicWindow.Enabled="False" 
+      fw:AcrylicWindow.ShowTitleBar="False" FontSize="5" Height="720" Width="920"
+      Title="NoteList" Visibility="Visible" UseLayoutRounding="False" >
 
-    <Grid>
+    <Grid IsHitTestVisible="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="589*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="451*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
@@ -30,22 +36,23 @@
         </Grid.RowDefinitions>
 
         <Label Content="Your notes" 
-               FontSize="50" 
+               FontSize="40" 
                Name="notesListLabel" 
-               Grid.Column="4"
-               Grid.Row="2"></Label>
+               Grid.Column="2"
+               Grid.Row="1" Grid.ColumnSpan="2"/>
 
         <ListView Name="notesList" 
-                  Grid.Column="4"
-                  Grid.Row="3">
+                  Grid.Column="2"
+                  Grid.Row="3" Grid.ColumnSpan="3" Margin="0,0,589,483" Grid.RowSpan="4">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    <EventSetter Event="PreviewMouseLeftButtonDown"
+                                 Handler="ListViewItem_PreviewMouseLeftButtonDown" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
-        
+
 
     </Grid>
 </Page>
