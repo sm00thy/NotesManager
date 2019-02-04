@@ -42,5 +42,10 @@ namespace NotesManager.Layouts
                 NavigationService.Navigate(new NoteList());
             }
         }
+
+        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Register());
+        }
     }
 }

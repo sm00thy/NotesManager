@@ -33,13 +33,11 @@ namespace NotesManager.Layouts
         private void ValidatePassword()
         {
             if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
-            {
-                MessageBox.Show("Login or passowrd cannot be empty", "NotesManager");
-            }
-            else if (loginInput.Text.Length < 5 || passwordInput.Password.Length < 5)
-            {
-                MessageBox.Show("Password length must be above 5 characters", "NotesManager");
-            }
+                MessageBox.Show("Login or passowrd cannot be empty", "Notes Manager");
+            else if (loginInput.Text.Length < 2)
+                MessageBox.Show("Login is too short", "Notes Manager");
+            else if (passwordInput.Password.Length < 5)
+                MessageBox.Show("Password length must be above 5 characters", "Notes Manager");
             else
             {
                 MessageBox.Show("Register succesful", "NotesManager");
