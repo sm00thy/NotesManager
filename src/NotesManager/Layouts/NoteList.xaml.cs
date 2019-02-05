@@ -1,14 +1,16 @@
-﻿using NotesManager.DataModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using NotesManagerLib.DataModels;
+using NotesManagerLib.ViewModel;
 
 namespace NotesManager.Layouts
 {
     /// <summary>
     /// Interaction logic for NoteList.xaml
     /// </summary>
+    /// 
     public partial class NoteList : Page
     {
         List<Note> notes = new List<Note>();
@@ -17,6 +19,8 @@ namespace NotesManager.Layouts
         public NoteList()
         {
             InitializeComponent();
+            DataContext = new NoteViewModel();
+
             // w tym miejcu potrzebne zapytanie do bazy z listą wszystkich notatek usera
             // póki co sztuczna lista 
             notes.Add(new Note(1, "xd", "XD"));
@@ -40,6 +44,12 @@ namespace NotesManager.Layouts
             {
                 MessageBox.Show("Note selected", "NotesManager");
             }
+        }
+
+        private void addNewNote_Click(object sender, RoutedEventArgs e)
+        {
+            NewNoteWindow window = new NewNoteWindow();
+            window.Show();
         }
     }
 }
