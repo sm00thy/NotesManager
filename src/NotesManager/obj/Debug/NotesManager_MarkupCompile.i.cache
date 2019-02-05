@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Jakub\Source\Repos\Coulibaly343\NotesManager\src\NotesManager\obj\Debug\
+C:\Users\Filip\Desktop\projektC#\NotesManager\src\NotesManager\obj\Debug\
 NotesManager
 none
 false
 DEBUG;TRACE
-C:\Users\Jakub\Source\Repos\Coulibaly343\NotesManager\src\NotesManager\App.xaml
+C:\Users\Filip\Desktop\projektC#\NotesManager\src\NotesManager\App.xaml
 4-234007260
 
-13-1087517065
-16148027389
+13-1121210416
+161724528220
 Layouts\Login.xaml;Layouts\NoteList.xaml;Layouts\NotePage.xaml;Layouts\Register.xaml;
 
-False
+True
 
