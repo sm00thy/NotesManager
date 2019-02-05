@@ -23,12 +23,16 @@ namespace NotesManager.Layouts
     {
         public int NoteId { get; set; }
         public int UserId { get; set; }
+        
 
-        public NotePage(int noteId, int userId)
+        public NotePage(int noteId, int userId, string _noteTitle, string _noteContent)
         {
             InitializeComponent();
             NoteId = noteId;
             UserId = userId;
+
+            noteTitle.Text = _noteTitle;
+            noteContent.Text = _noteContent;
         }
 
 
@@ -39,6 +43,12 @@ namespace NotesManager.Layouts
             //strzał do bazy z createNote
             else;
             //strzał do bazy z updateNote
+            NavigationService.Navigate(new NoteList(UserId));
+        }
+
+        private void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            //strzał do bazy z delete po NoteId
             NavigationService.Navigate(new NoteList(UserId));
         }
     }

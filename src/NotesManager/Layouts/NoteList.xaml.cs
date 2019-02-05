@@ -41,12 +41,17 @@ namespace NotesManager.Layouts
             var item = sender as ListViewItem;
             var content = item.Content as Note;
             var id = content.Id;
-            NavigationService.Navigate(new NotePage(id, UserId));
+            NavigationService.Navigate(new NotePage(id, UserId, content.Title, content.Content));
         }
 
         private void AddNoteBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NotePage(0, UserId));
+            NavigationService.Navigate(new NotePage(0, UserId, "", ""));
+        }
+
+        private void LogoutBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
         }
     }
 }

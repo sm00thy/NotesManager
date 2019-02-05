@@ -35,13 +35,23 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <Button Content="Logout"
+                x:Name="logoutBtn"
+                Grid.Column="6"
+                Grid.Row="1"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="14"
+                Click="LogoutBtn_OnClick"
+        />
+
         <Label Content="Your notes" 
                FontSize="40" 
                Name="notesListLabel" 
-               Grid.Column="2"
+               Grid.Column="4"
                Grid.Row="1" Grid.ColumnSpan="2"/>
 
-        <ListView Grid.Column="2"
+        <ListView Grid.Column="4"
                   Grid.Row="2" x:Name="listView" ItemsSource="{Binding Notes}">
             <ListView.ItemTemplate>
                 <DataTemplate >
@@ -57,7 +67,7 @@
 
         <Button Content="Add note"
                 x:Name="addNoteBtn"
-                Grid.Column="2"
+                Grid.Column="4"
                 Grid.Row="3"
                 Width="150"
                 Margin="0, 20, 0, 20"
