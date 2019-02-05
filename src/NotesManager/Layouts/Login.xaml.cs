@@ -39,7 +39,10 @@ namespace NotesManager.Layouts
 
             else
             {
-                NavigationService.Navigate(new NoteList());
+                //przy logowaniu trzeba zwrócic user id
+                var userId = 1;
+
+                NavigationService.Navigate(new NoteList(userId));
             }
         }
 

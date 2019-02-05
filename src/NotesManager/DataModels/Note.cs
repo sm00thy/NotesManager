@@ -16,6 +16,12 @@ namespace NotesManager.DataModels
             Content = content;
         }
 
+        public Note(string title, string content)
+        {
+            Title = title;
+            Content = content;
+        }
+
         public override string ToString()
         {
             return Title + Content;
