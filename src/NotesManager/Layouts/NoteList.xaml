@@ -35,24 +35,45 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <Button Content="Logout"
+                x:Name="logoutBtn"
+                Grid.Column="6"
+                Grid.Row="1"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="14"
+                Click="LogoutBtn_OnClick"
+        />
+
         <Label Content="Your notes" 
                FontSize="40" 
                Name="notesListLabel" 
-               Grid.Column="2"
+               Grid.Column="4"
                Grid.Row="1" Grid.ColumnSpan="2"/>
 
-        <ListView Name="notesList" 
-                  Grid.Column="2"
-                  Grid.Row="3" Grid.ColumnSpan="3" Margin="0,0,589,483" Grid.RowSpan="4">
+        <ListView Grid.Column="4"
+                  Grid.Row="2" x:Name="listView" ItemsSource="{Binding Notes}">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <TextBlock Text="{Binding Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown"
-                                 Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
-
+        <Button Content="Add note"
+                x:Name="addNoteBtn"
+                Grid.Column="4"
+                Grid.Row="3"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="14"
+                Click="AddNoteBtn_OnClick"
+        />
 
     </Grid>
 </Page>

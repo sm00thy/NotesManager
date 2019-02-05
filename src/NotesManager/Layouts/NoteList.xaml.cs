@@ -11,35 +11,47 @@ namespace NotesManager.Layouts
     /// </summary>
     public partial class NoteList : Page
     {
-        List<Note> notes = new List<Note>();
+        public int UserId { get; set; }
         List<string> notesTitles = new List<string>();
 
-        public NoteList()
+        public NoteList(int userId)
         {
             InitializeComponent();
-            // w tym miejcu potrzebne zapytanie do bazy z listą wszystkich notatek usera
+            // w tym miejcu potrzebne zapytanie do bazy z listą wszystkich notatek usera po user id
             // póki co sztuczna lista 
-            notes.Add(new Note(1, "xd", "XD"));
-            notes.Add(new Note(2, "hehe", ":)"));
-            notes.Add(new Note(3, "haha", ":))"));
-            notes.Add(new Note(4, "hyhy", ":)))"));
-            notes.Add(new Note(5, "beka", ":))))"));
 
-            foreach (var note in notes)
+            UserId = userId;
+            List<Note> notesList = new List<Note>();
+
+            notesList.Add(new Note(1, "xd", "XD"));
+            notesList.Add(new Note(2, "hehe", ":)"));
+            notesList.Add(new Note(3, "haha", ":))"));
+            notesList.Add(new Note(4, "hyhy", ":)))"));
+            notesList.Add(new Note(5, "beka", ":))))"));
+
+
+            DataContext = new
             {
-                notesTitles.Add(note.Title);
-            }
-
-            notesList.ItemsSource = notesTitles;
+                Notes = notesList
+            };
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
-            if (item != null && item.IsSelected)
-            {
-                MessageBox.Show("Note selected", "NotesManager");
-            }
+            var content = item.Content as Note;
+            var id = content.Id;
+            NavigationService.Navigate(new NotePage(id, UserId, content.Title, content.Content));
+        }
+
+        private void AddNoteBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NotePage(0, UserId, "", ""));
+        }
+
+        private void LogoutBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
         }
     }
 }

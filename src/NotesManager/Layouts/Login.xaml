@@ -73,7 +73,7 @@
                 Margin="0, 20, 0, 20"
                 FontSize="14" 
                 Click="LoginBtnClick"/>
-         
+
         <Button Content="Register" 
                 x:Name="registerBtn"
                 Width="150"
