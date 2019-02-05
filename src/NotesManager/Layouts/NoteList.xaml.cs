@@ -20,20 +20,12 @@ namespace NotesManager.Layouts
         {
             InitializeComponent();
             DataContext = new NoteViewModel();
+            var _dbContext = new NoteDb();
 
-            // w tym miejcu potrzebne zapytanie do bazy z listą wszystkich notatek usera
-            // póki co sztuczna lista 
-            notes.Add(new Note(1, "xd", "XD"));
-            notes.Add(new Note(2, "hehe", ":)"));
-            notes.Add(new Note(3, "haha", ":))"));
-            notes.Add(new Note(4, "hyhy", ":)))"));
-            notes.Add(new Note(5, "beka", ":))))"));
-
-            foreach (var note in notes)
+            foreach (var note in _dbContext.Notes)
             {
                 notesTitles.Add(note.Title);
             }
-
             notesList.ItemsSource = notesTitles;
         }
 
@@ -46,7 +38,7 @@ namespace NotesManager.Layouts
             }
         }
 
-        private void addNewNote_Click(object sender, RoutedEventArgs e)
+        private void AddNewNote_Click(object sender, RoutedEventArgs e)
         {
             NewNoteWindow window = new NewNoteWindow();
             window.Show();

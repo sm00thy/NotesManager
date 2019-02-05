@@ -27,7 +27,7 @@ namespace NotesManager.Layouts
 
         private void LoginBtnClick(object sender, RoutedEventArgs e)
         {
-            ValidatePassword();
+             ValidatePassword();
         }
 
         private void ValidatePassword()

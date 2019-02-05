@@ -13,5 +13,6 @@ namespace NotesManagerLib.DataModels
         {}
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
