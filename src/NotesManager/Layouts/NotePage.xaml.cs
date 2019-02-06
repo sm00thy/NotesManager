@@ -42,13 +42,17 @@ namespace NotesManager.Layouts
         {
             var note = new Note(NoteId, noteTitle.Text,
                                 noteContent.Text, UserId);
+            var con = new Notedb();
             if (note.Id == 0) {
-                _noteDb.Notes.Add(note);
-                await _noteDb.SaveChangesAsync();
+                con.Notes.Add(note);
+                await con.SaveChangesAsync();
+              //  await _noteRepository.AddAsync(note);
+             //   _noteDb.Notes.Add(note);
+            //    await _noteDb.SaveChangesAsync();
             }
             else{
-                _noteDb.Notes.Attach(note);
-                await _noteDb.SaveChangesAsync();
+                con.Notes.Attach(note);
+                await con.SaveChangesAsync();
             }
             NavigationService.Navigate(new NoteList(UserId));
         }

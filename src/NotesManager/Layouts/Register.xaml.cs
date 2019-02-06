@@ -23,7 +23,7 @@ namespace NotesManager.Layouts
 
         private async Task RegisterUser()
         {
-            var _dbContext = new Notedb();
+            var dbContext = new Notedb();
             
             if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
                 MessageBox.Show("Login or passowrd cannot be empty", "Notes Manager");
@@ -34,8 +34,8 @@ namespace NotesManager.Layouts
             else
             {
                 var user = new User(loginInput.Text, passwordInput.Password);
-                _dbContext.Users.Add(user);
-                await _dbContext.SaveChangesAsync();
+                dbContext.Users.Add(user);
+                await dbContext.SaveChangesAsync();
                 MessageBox.Show("Register succesful", "NotesManager");
                 NavigationService.GoBack();
             }

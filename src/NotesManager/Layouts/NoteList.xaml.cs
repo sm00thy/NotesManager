@@ -30,17 +30,17 @@ namespace NotesManager.Layouts
             DataContext = new NoteViewModel();
             var _dbContext = new Notedb();
 
- /*         List<Note> notesList = new List<Note>();
+         List<Note> notesList = new List<Note>();
 
-            foreach (var note in _noteDb.Notes)
+            foreach (var note in _dbContext.Notes)
             {
 
                 notesList.Add(note);
             }
-*/
+
             DataContext = new
             {
-                Notes = GetNotes(UserId)
+                Notes = /* GetNotes(UserId) */ notesList
             };
         }
 
@@ -56,11 +56,6 @@ namespace NotesManager.Layouts
             NavigationService.Navigate(new NotePage(id, UserId, content.Title, content.Content));
         }
 
-        private void AddNewNote_Click(object sender, RoutedEventArgs e)
-        {
-            NewNoteWindow window = new NewNoteWindow();
-            window.Show();
-        }
 
         private void AddNoteBtn_OnClick(object sender, RoutedEventArgs e)
         {

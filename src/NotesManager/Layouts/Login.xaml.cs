@@ -21,35 +21,32 @@ namespace NotesManager.Layouts
     /// </summary>
     public partial class Login : Page
     {
-        private readonly Notedb _noteDb;
-        public Login(Notedb noteDb)
-        {
-            _noteDb = noteDb;
-        }
         public Login()
         {
             InitializeComponent();
         }
 
-        private /* async Task */ void LoginBtnClick(object sender, RoutedEventArgs e)
+        private /*async*/ void LoginBtnClick(object sender, RoutedEventArgs e)
         {
               ValidatePassword();
         }
 
         private /*async Task*/ void ValidatePassword()
         {
+            var notedb = new Notedb();
             if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password)) {
                 MessageBox.Show("Login or passowrd cannot be empty", "NotesManager");
             }
             else
             {
-                var user = _noteDb.Users.Where(x => x.Login == loginInput.Text).FirstOrDefault();
-                if (user.Password == passwordInput.Password)
-                    NavigationService.Navigate(new NoteList(user.UserId));
-                else
-                {
+                var user = notedb.Users
+                    .Where(x => x.Login == loginInput.Text && 
+                    x.Password == passwordInput.Password).FirstOrDefault();
+
+                if (user == null)
                     MessageBox.Show("Bad credientals");
-                }
+                else
+                    NavigationService.Navigate(new NoteList(user.UserId));
             }
         }
 

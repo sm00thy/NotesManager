@@ -17,6 +17,12 @@ namespace NotesManagerLib.Repositories
             _noteDbContext = noteDb;
         }
 
+        public async Task AddAsync(Note note)
+        {
+            _noteDbContext.Notes.Add(note);
+            await _noteDbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<Note>> GetAllByUserIdAsync(int userId)
         {
             var notes = await _noteDbContext.Notes
