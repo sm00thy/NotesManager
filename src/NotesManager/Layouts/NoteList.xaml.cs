@@ -13,35 +13,50 @@ namespace NotesManager.Layouts
     /// 
     public partial class NoteList : Page
     {
-        List<Note> notes = new List<Note>();
-        List<string> notesTitles = new List<string>();
+        public int UserId { get; set; }
 
-        public NoteList()
+        public NoteList(int userId)
         {
+            UserId = userId;
             InitializeComponent();
             DataContext = new NoteViewModel();
             var _dbContext = new NoteDb();
 
+            List<Note> notesList = new List<Note>();
+
             foreach (var note in _dbContext.Notes)
             {
-                notesTitles.Add(note.Title);
+                notesList.Add(note);
             }
-            notesList.ItemsSource = notesTitles;
+
+            DataContext = new
+            {
+                Notes = notesList
+            };
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
-            if (item != null && item.IsSelected)
-            {
-                MessageBox.Show("Note selected", "NotesManager");
-            }
+            var content = item.Content as Note;
+            var id = content.Id;
+            NavigationService.Navigate(new NotePage(id, UserId, content.Title, content.Content));
         }
 
         private void AddNewNote_Click(object sender, RoutedEventArgs e)
         {
             NewNoteWindow window = new NewNoteWindow();
             window.Show();
+        }
+
+        private void AddNoteBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NotePage(0, UserId, "", ""));
+        }
+
+        private void LogoutBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
         }
     }
 }

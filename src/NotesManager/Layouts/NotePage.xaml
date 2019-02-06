@@ -9,6 +9,56 @@
       Title="NotePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="589*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="451*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="saveBtn"
+                Content="Save"
+                Click="SaveNoteBtnClick"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                Grid.Column="4"
+                Grid.Row="1"></Button>
+
+        <Button x:Name="deleteBtn"
+                Content="Delete"
+                Click="DeleteBtn_OnClick"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                Grid.Column="4"
+                Grid.Row="2"></Button>
+
+        <TextBox AcceptsReturn="True" TextWrapping="Wrap" x:Name="noteTitle"
+                 Grid.Column="4"
+                 Grid.Row="3"
+                 Width="150"
+                 Margin="0, 20, 0, 20"
+                 FontSize="14" BorderThickness="2"/>
+
+        <TextBox AcceptsReturn="True" TextWrapping="Wrap" x:Name="noteContent"
+                 Grid.Column="4"
+                 Grid.Row="4"
+                 Width="150"
+                 Margin="0, 20, 0, 20"
+                 FontSize="14" BorderThickness="1"/>
     </Grid>
 </Page>

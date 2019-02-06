@@ -34,47 +34,47 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        
+        <Button Content="Logout"
+                x:Name="logoutBtn"
+                Grid.Column="6"
+                Grid.Row="1"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="14"
+                Click="LogoutBtn_OnClick"
+        />
 
         <Label Content="Your notes" 
                FontSize="40" 
                Name="notesListLabel" 
                Grid.Column="4"
-               Grid.Row="2" Margin="335,0" Grid.ColumnSpan="3"/>
+               Grid.Row="1" Grid.ColumnSpan="2"/>
 
-        <Button 
-            Content="Login Page"
-            
-            Command="{x:Static NavigationCommands.BrowseBack}"
-            FontSize="10"
-            Grid.Row="1"
-            Grid.Column="4" 
-            Height="Auto"
-            Margin="10,10,396,30"
-            />
-
-        <Button 
-            Content="Add note"
-            x:Name="addNewNote"
-            FontSize="12"
-            Grid.Row="6"
-            Grid.Column="4" 
-            Height="Auto"
-            Margin="408,510,0,21" Click="AddNewNote_Click"
-            />
-
-
-        <ListView Name="notesList" 
-                  Grid.Column="4"
-                  Grid.Row="4" Margin="197,10,195,88" Grid.RowSpan="3" Grid.ColumnSpan="3">
+        <ListView Grid.Column="4"
+                  Grid.Row="2" x:Name="listView" ItemsSource="{Binding Notes}">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <TextBlock Text="{Binding Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown"
+                    <EventSetter Event="PreviewMouseLeftButtonDown" 
                                  Handler="ListViewItem_PreviewMouseLeftButtonDown" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <DataGrid ItemsSource="{Binding Notes}"></DataGrid>
+        <Button Content="Add note"
+                x:Name="addNoteBtn"
+                Grid.Column="4"
+                Grid.Row="3"
+                Width="150"
+                Margin="0, 20, 0, 20"
+                FontSize="14"
+                Click="AddNoteBtn_OnClick"
+         />
 
     </Grid>
 </Page>
