@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace NotesManagerLib.DataModels
 {
-    public class NoteDb : DbContext
+    public class Notedb : DbContext
     {
-        public NoteDb() : base("name=DefaultConnection")
+        public Notedb() : base("name=DefaultConnection")
         {}
 
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
+
     }
 }

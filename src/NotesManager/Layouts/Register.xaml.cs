@@ -1,4 +1,5 @@
 ﻿using NotesManagerLib.DataModels;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -15,14 +16,14 @@ namespace NotesManager.Layouts
             InitializeComponent();
         }
 
-        private void RegisterButtonClick(object sender, RoutedEventArgs e)
+        private async void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
-            RegisterUser();
+             await RegisterUser();
         }
 
-        private async void RegisterUser()
+        private async Task RegisterUser()
         {
-            var _dbContext = new NoteDb();
+            var _dbContext = new Notedb();
             
             if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
                 MessageBox.Show("Login or passowrd cannot be empty", "Notes Manager");

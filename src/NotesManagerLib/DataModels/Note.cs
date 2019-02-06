@@ -12,14 +12,15 @@ namespace NotesManagerLib.DataModels
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime DateTime { get { return DateTime.Now; } } 
+        public int UserId { get; set; }
 
         private Note() { }
-
-        public Note(int id, string title, string content)
+        public Note(int id, string title, string content, int userId)
         {
             Id = id;
             Title = title;
             Content = content;
+            UserId = userId;
         }
 
         public Note(string title, string content)

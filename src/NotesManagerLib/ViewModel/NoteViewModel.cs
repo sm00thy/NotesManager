@@ -9,7 +9,7 @@ namespace NotesManagerLib.ViewModel
 {
     public class NoteViewModel
     {
-        readonly NoteDb noteDb = new NoteDb();
+        readonly Notedb noteDb = new Notedb();
         public NoteViewModel()
         {
             AppDomain.CurrentDomain.SetData("DataDirectory",

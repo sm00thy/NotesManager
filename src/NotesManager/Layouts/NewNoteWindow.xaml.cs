@@ -26,7 +26,7 @@ namespace NotesManager.Layouts
                 MessageBox.Show("Title too short");
                 return;
             }
-            NoteDb _dbContext = new NoteDb();
+            Notedb _dbContext = new Notedb();
             var note = new Note(titleBlock.Text, contentBlock.Text);
             _dbContext.Notes.Add(note);
             await _dbContext.SaveChangesAsync();
