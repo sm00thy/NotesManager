@@ -30,12 +30,14 @@ namespace NotesManager.Layouts
             DataContext = new NoteViewModel();
             var _dbContext = new Notedb();
 
-         List<Note> notesList = new List<Note>();
+            List<Note> notesList = new List<Note>();
 
             foreach (var note in _dbContext.Notes)
             {
-
-                notesList.Add(note);
+                if (note.UserId == UserId)
+                {
+                    notesList.Add(note);
+                }
             }
 
             DataContext = new

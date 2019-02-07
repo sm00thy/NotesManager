@@ -1,5 +1,6 @@
 ﻿using NotesManagerLib.DataModels;
 using NotesManagerLib.Repositories;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,9 +47,6 @@ namespace NotesManager.Layouts
             if (note.Id == 0) {
                 con.Notes.Add(note);
                 await con.SaveChangesAsync();
-              //  await _noteRepository.AddAsync(note);
-             //   _noteDb.Notes.Add(note);
-            //    await _noteDb.SaveChangesAsync();
             }
             else{
                 con.Notes.Attach(note);
@@ -57,11 +55,12 @@ namespace NotesManager.Layouts
             NavigationService.Navigate(new NoteList(UserId));
         }
 
-        private void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
+        private async void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
         {
-        //    _noteRepository.RemoveAsync()
-        //    _noteDb.Notes.Remove()
-            //strzał do bazy z delete po NoteId
+            var connection = new Notedb();
+            var note = await connection.Notes.FindAsync(NoteId);
+            connection.Notes.Remove(note);
+            await connection.SaveChangesAsync();
             NavigationService.Navigate(new NoteList(UserId));
         }
     }
