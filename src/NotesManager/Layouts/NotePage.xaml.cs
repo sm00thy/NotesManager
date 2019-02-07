@@ -1,18 +1,10 @@
-﻿using NotesManager.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NotesManagerLib.DataModels;
+using NotesManagerLib.Repositories;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NotesManager.Layouts
 {
@@ -21,10 +13,22 @@ namespace NotesManager.Layouts
     /// </summary>
     public partial class NotePage : Page
     {
+        private readonly Notedb _noteDb;
+        private readonly INoteRepository _noteRepository;
+
+        public NotePage(Notedb noteDb, INoteRepository noteRepository)
+        {
+            _noteDb = noteDb;
+            _noteRepository = noteRepository;
+        }
+
         public int NoteId { get; set; }
         public int UserId { get; set; }
-        
 
+        public NotePage()
+        {
+            InitializeComponent();
+        }
         public NotePage(int noteId, int userId, string _noteTitle, string _noteContent)
         {
             InitializeComponent();
@@ -35,20 +39,28 @@ namespace NotesManager.Layouts
             noteContent.Text = _noteContent;
         }
 
-
-        private /*async Task*/ void SaveNoteBtnClick(object sender, RoutedEventArgs e)
+        private async void SaveNoteBtnClick(object sender, RoutedEventArgs e)
         {
-            var note = new Note(NoteId, noteTitle.Text, noteContent.Text);
-            if (note.Id == 0) ;
-            //strzał do bazy z createNote
-            else;
-            //strzał do bazy z updateNote
+            var note = new Note(NoteId, noteTitle.Text,
+                                noteContent.Text, UserId);
+            var con = new Notedb();
+            if (note.Id == 0) {
+                con.Notes.Add(note);
+                await con.SaveChangesAsync();
+            }
+            else{
+                con.Notes.Attach(note);
+                await con.SaveChangesAsync();
+            }
             NavigationService.Navigate(new NoteList(UserId));
         }
 
-        private void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
+        private async void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            //strzał do bazy z delete po NoteId
+            var connection = new Notedb();
+            var note = await connection.Notes.FindAsync(NoteId);
+            connection.Notes.Remove(note);
+            await connection.SaveChangesAsync();
             NavigationService.Navigate(new NoteList(UserId));
         }
     }

@@ -1,41 +1,55 @@
-﻿using NotesManager.DataModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using NotesManagerLib.DataModels;
+using NotesManagerLib.Repositories;
+using NotesManagerLib.ViewModel;
 
 namespace NotesManager.Layouts
 {
     /// <summary>
     /// Interaction logic for NoteList.xaml
     /// </summary>
+    /// 
     public partial class NoteList : Page
     {
+        private readonly INoteRepository _noteRepository;
         public int UserId { get; set; }
-        List<string> notesTitles = new List<string>();
+
+        public NoteList(INoteRepository noteRepository)
+        {
+            _noteRepository = noteRepository;
+        }
 
         public NoteList(int userId)
         {
-            InitializeComponent();
-            // w tym miejcu potrzebne zapytanie do bazy z listą wszystkich notatek usera po user id
-            // póki co sztuczna lista 
-
             UserId = userId;
+            InitializeComponent();
+            DataContext = new NoteViewModel();
+            var _dbContext = new Notedb();
+
             List<Note> notesList = new List<Note>();
 
-            notesList.Add(new Note(1, "xd", "XD"));
-            notesList.Add(new Note(2, "hehe", ":)"));
-            notesList.Add(new Note(3, "haha", ":))"));
-            notesList.Add(new Note(4, "hyhy", ":)))"));
-            notesList.Add(new Note(5, "beka", ":))))"));
-
+            foreach (var note in _dbContext.Notes)
+            {
+                if (note.UserId == UserId)
+                {
+                    notesList.Add(note);
+                }
+            }
 
             DataContext = new
             {
-                Notes = notesList
+                Notes = /* GetNotes(UserId) */ notesList
             };
         }
 
+        private async Task GetNotes(int userId)
+        {
+            await _noteRepository.GetAllByUserIdAsync(userId);
+        }
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
@@ -43,6 +57,7 @@ namespace NotesManager.Layouts
             var id = content.Id;
             NavigationService.Navigate(new NotePage(id, UserId, content.Title, content.Content));
         }
+
 
         private void AddNoteBtn_OnClick(object sender, RoutedEventArgs e)
         {

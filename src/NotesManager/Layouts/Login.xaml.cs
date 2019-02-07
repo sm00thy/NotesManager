@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotesManagerLib.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,24 +26,27 @@ namespace NotesManager.Layouts
             InitializeComponent();
         }
 
-        private void LoginBtnClick(object sender, RoutedEventArgs e)
+        private /*async*/ void LoginBtnClick(object sender, RoutedEventArgs e)
         {
-            ValidatePassword();
+              ValidatePassword();
         }
 
-        private void ValidatePassword()
+        private /*async Task*/ void ValidatePassword()
         {
-            if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
-            {
+            var notedb = new Notedb();
+            if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password)) {
                 MessageBox.Show("Login or passowrd cannot be empty", "NotesManager");
             }
-
             else
             {
-                //przy logowaniu trzeba zwrócic user id
-                var userId = 1;
+                var user = notedb.Users
+                    .Where(x => x.Login == loginInput.Text && 
+                    x.Password == passwordInput.Password).FirstOrDefault();
 
-                NavigationService.Navigate(new NoteList(userId));
+                if (user == null)
+                    MessageBox.Show("Bad credientals");
+                else
+                    NavigationService.Navigate(new NoteList(user.UserId));
             }
         }
 

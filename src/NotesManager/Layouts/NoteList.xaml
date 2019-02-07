@@ -18,9 +18,9 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="589*"/>
+            <ColumnDefinition Width="249*"/>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="451*"/>
+            <ColumnDefinition Width="191*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
@@ -34,7 +34,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-
+        
         <Button Content="Logout"
                 x:Name="logoutBtn"
                 Grid.Column="6"
@@ -60,7 +60,8 @@
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    <EventSetter Event="PreviewMouseLeftButtonDown" 
+                                 Handler="ListViewItem_PreviewMouseLeftButtonDown" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
@@ -73,7 +74,7 @@
                 Margin="0, 20, 0, 20"
                 FontSize="14"
                 Click="AddNoteBtn_OnClick"
-        />
+         />
 
     </Grid>
 </Page>

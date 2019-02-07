@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NotesManagerLib.DataModels;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NotesManager.Layouts
 {
@@ -25,13 +16,15 @@ namespace NotesManager.Layouts
             InitializeComponent();
         }
 
-        private void RegisterButtonClick(object sender, RoutedEventArgs e)
+        private async void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
-            ValidatePassword();
+             await RegisterUser();
         }
 
-        private void ValidatePassword()
+        private async Task RegisterUser()
         {
+            var dbContext = new Notedb();
+            
             if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
                 MessageBox.Show("Login or passowrd cannot be empty", "Notes Manager");
             else if (loginInput.Text.Length < 2)
@@ -40,6 +33,9 @@ namespace NotesManager.Layouts
                 MessageBox.Show("Password length must be above 5 characters", "Notes Manager");
             else
             {
+                var user = new User(loginInput.Text, passwordInput.Password);
+                dbContext.Users.Add(user);
+                await dbContext.SaveChangesAsync();
                 MessageBox.Show("Register succesful", "NotesManager");
                 NavigationService.GoBack();
             }

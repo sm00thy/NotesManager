@@ -38,7 +38,7 @@
                 Margin="0, 20, 0, 20"
                 Grid.Column="4"
                 Grid.Row="1"></Button>
-        
+
         <Button x:Name="deleteBtn"
                 Content="Delete"
                 Click="DeleteBtn_OnClick"

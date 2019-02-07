@@ -71,5 +71,6 @@
                 Margin="0, 20, 0, 20"
                 FontSize="14"
                 Click="RegisterButtonClick"/>
+        
     </Grid>
 </Page>
