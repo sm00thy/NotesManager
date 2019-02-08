@@ -28,27 +28,26 @@ namespace NotesManager.Layouts
             UserId = userId;
             InitializeComponent();
             DataContext = new NoteViewModel();
-            var _dbContext = new Notedb();
-
-            List<Note> notesList = new List<Note>();
-
-            foreach (var note in _dbContext.Notes)
-            {
-                if (note.UserId == UserId)
-                {
-                    notesList.Add(note);
-                }
-            }
 
             DataContext = new
             {
-                Notes = /* GetNotes(UserId) */ notesList
+                Notes = GetNotes(UserId)
             };
         }
 
-        private async Task GetNotes(int userId)
+        private List<Note> GetNotes(int userId)
         {
-            await _noteRepository.GetAllByUserIdAsync(userId);
+            List<Note> notesList = new List<Note>();
+            var db = new Notedb();
+
+            foreach (var note in db.Notes)
+            {
+                if (note.UserId == userId)
+                {
+                   notesList.Add(note);
+                }
+            }
+            return notesList;
         }
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

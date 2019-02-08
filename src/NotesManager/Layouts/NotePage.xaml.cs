@@ -13,12 +13,9 @@ namespace NotesManager.Layouts
     /// </summary>
     public partial class NotePage : Page
     {
-        private readonly Notedb _noteDb;
         private readonly INoteRepository _noteRepository;
-
-        public NotePage(Notedb noteDb, INoteRepository noteRepository)
+        public NotePage( INoteRepository noteRepository)
         {
-            _noteDb = noteDb;
             _noteRepository = noteRepository;
         }
 
@@ -43,24 +40,30 @@ namespace NotesManager.Layouts
         {
             var note = new Note(NoteId, noteTitle.Text,
                                 noteContent.Text, UserId);
-            var con = new Notedb();
+            var notedb = new Notedb();
             if (note.Id == 0) {
-                con.Notes.Add(note);
-                await con.SaveChangesAsync();
+                notedb.Notes.Add(note);
+                await notedb.SaveChangesAsync();
             }
             else{
-                con.Notes.Attach(note);
-                await con.SaveChangesAsync();
+                var tempNote = await notedb.Notes
+                    .FirstOrDefaultAsync(x => x.Id == NoteId);
+                tempNote.Title = noteTitle.Text;
+                tempNote.Content = noteContent.Text;
+                await notedb.SaveChangesAsync();
             }
             NavigationService.Navigate(new NoteList(UserId));
         }
 
         private async void DeleteBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var connection = new Notedb();
-            var note = await connection.Notes.FindAsync(NoteId);
-            connection.Notes.Remove(note);
-            await connection.SaveChangesAsync();
+            var notedb = new Notedb();
+            var note = await notedb.Notes.FindAsync(NoteId);
+            if (!Equals(note, null))
+            {
+                notedb.Notes.Remove(note);
+                await notedb.SaveChangesAsync();
+            }
             NavigationService.Navigate(new NoteList(UserId));
         }
     }
