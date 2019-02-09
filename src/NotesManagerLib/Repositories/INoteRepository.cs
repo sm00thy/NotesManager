@@ -9,8 +9,9 @@ namespace NotesManagerLib.Repositories
 {
     public interface INoteRepository
     {
+        Task<Note> GetNoteAsync(int noteId);
         Task AddAsync(Note note);
-        Task<IEnumerable<Note>> GetAllByUserIdAsync(int userId);
         Task RemoveAsync(Note note);
+        Task UpdateAsync(Note note);
     }
 }

@@ -5,36 +5,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NotesManagerLib.DataModels;
+using NotesManagerLib.ViewModel;
 
 namespace NotesManagerLib.Repositories
 {
-    class NoteRepository : INoteRepository
+    public class NoteRepository : INoteRepository
     {
-        private readonly Notedb _noteDbContext;
-
-        public NoteRepository(Notedb noteDb)
-        {
-            _noteDbContext = noteDb;
-        }
+        private NoteDb _noteDb = new NoteDb();
+        public NoteRepository()
+        {}
 
         public async Task AddAsync(Note note)
         {
-            _noteDbContext.Notes.Add(note);
-            await _noteDbContext.SaveChangesAsync();
+            _noteDb.Notes.Add(note);
+            await _noteDb.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Note>> GetAllByUserIdAsync(int userId)
+        public async Task<Note> GetNoteAsync(int noteId)
         {
-            var notes = await _noteDbContext.Notes
-                        .Where(x => x.UserId == userId)
-                        .ToListAsync();
-            return notes;
+           return await _noteDb.Notes.
+                SingleOrDefaultAsync(x => x.Id == noteId);
         }
 
         public async Task RemoveAsync(Note note)
         {
-            _noteDbContext.Notes.Remove(note);
-            await _noteDbContext.SaveChangesAsync();
+            _noteDb.Notes.Remove(note);
+            await _noteDb.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Note note)
+        {
+            var temp = await _noteDb.Notes
+                .SingleOrDefaultAsync(x => x.Id == note.Id);
+            temp.Title = note.Title;
+            temp.Content = note.Content;
+            await _noteDb.SaveChangesAsync();
         }
     }
 }

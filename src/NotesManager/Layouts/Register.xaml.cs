@@ -1,5 +1,5 @@
-﻿using NotesManagerLib.DataModels;
-using System.Threading.Tasks;
+﻿using NotesManagerLib;
+using NotesManagerLib.Repositories;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -11,6 +11,7 @@ namespace NotesManager.Layouts
     /// </summary>
     public partial class Register : Page
     {
+        private readonly IUserRepository _userRepository = new UserRepository();
         public Register()
         {
             InitializeComponent();
@@ -18,27 +19,11 @@ namespace NotesManager.Layouts
 
         private async void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
-             await RegisterUser();
-        }
-
-        private async Task RegisterUser()
-        {
-            var dbContext = new Notedb();
-            
-            if (string.IsNullOrEmpty(loginInput.Text) || string.IsNullOrEmpty(passwordInput.Password))
-                MessageBox.Show("Login or passowrd cannot be empty", "Notes Manager");
-            else if (loginInput.Text.Length < 2)
-                MessageBox.Show("Login is too short", "Notes Manager");
-            else if (passwordInput.Password.Length < 5)
-                MessageBox.Show("Password length must be above 5 characters", "Notes Manager");
-            else
-            {
-                var user = new User(loginInput.Text, passwordInput.Password);
-                dbContext.Users.Add(user);
-                await dbContext.SaveChangesAsync();
-                MessageBox.Show("Register succesful", "NotesManager");
+            await _userRepository.AddUserAsync(loginInput.Text, passwordInput.Password);
+            bool check = await _userRepository
+                .ValidateInput(loginInput.Text, passwordInput.Password);
+            if (check)
                 NavigationService.GoBack();
-            }
         }
     }
 }
