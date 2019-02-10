@@ -1,0 +1,270 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/amado/Desktop/NotesManager/src/NotesManagerLib",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "XPTpiaEyW5wKNxnX1hXUCg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "Ggitahp0gsRAofL696ze9A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "s+KVHXen+UnPDmpZELOWKQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.DataModels.Note.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.DataModels.Note.html",
+          "hash": "CsQOZ3Wf2W0DEEvg4rNR4g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.DataModels.NoteDb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.DataModels.NoteDb.html",
+          "hash": "0dJtyT6mGOZt6CakirXMrQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.DataModels.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.DataModels.User.html",
+          "hash": "V1y9lvGndAoLtZXcjIVzdA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.DataModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.DataModels.html",
+          "hash": "X/dSYfpB0BbYjdsq1B6kyA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.Repositories.INoteRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.Repositories.INoteRepository.html",
+          "hash": "n2/sbMPfFW3TycNeG6+G1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.Repositories.IUserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.Repositories.IUserRepository.html",
+          "hash": "MJp4ev8B3Xw8x/k4ubPryA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.Repositories.NoteRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.Repositories.NoteRepository.html",
+          "hash": "de0xwGz0mhB1FKdY5r3T+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.Repositories.html",
+          "hash": "TEY3NbBpLOMvhDjEmMjC5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.UserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.UserRepository.html",
+          "hash": "tWjcUXWJSe+n2/L2voCUjw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.ViewModel.NoteViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.ViewModel.NoteViewModel.html",
+          "hash": "074+vFoptiBpo4K+Z83dww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.ViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.ViewModel.html",
+          "hash": "qax5KZrmr9fW/GIqXKci6Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/NotesManagerLib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NotesManagerLib.html",
+          "hash": "2JjiIuxooZNZ5Upkt+UCwA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "XQ38hetgcfK8P6sAA1mt+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Sg+nKmnHP++YKMT39ruhpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 12,
+          "skipped_file_count": 12
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
