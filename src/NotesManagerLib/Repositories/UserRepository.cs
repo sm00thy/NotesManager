@@ -53,7 +53,7 @@ namespace NotesManagerLib
         /// <summary>
         /// Adding user to db , check if user of given parameters exist
         /// and login and password are valid
-        /// </summary>
+        /// </summary> 
         /// <param name="login"></param>
         /// <param name="password"></param>
         public async Task AddUserAsync(string login, string password)
