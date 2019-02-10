@@ -19,6 +19,6 @@ whole installation.
 * Your application will be in specified by you directory
 
 ### Documentation 
-To see all documentation go to src/NotesManager.Lib/_site directory
+To see all documentation go to **src/NotesManager.Lib/_site** directory
 click on toc.html file 
 
