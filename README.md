@@ -20,5 +20,5 @@ whole installation.
 
 ### Documentation 
 To see all documentation go to **src/NotesManager.Lib/_site** directory
-click on toc.html file 
+click on **toc.html** file 
 
