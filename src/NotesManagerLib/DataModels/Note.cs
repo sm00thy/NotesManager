@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NotesManagerLib.DataModels
 {
+    /// <summary>
+    /// Class which representing Note model
+    /// </summary>
     public class Note
     {
         public int Id { get; set; }
@@ -15,6 +18,14 @@ namespace NotesManagerLib.DataModels
         public int UserId { get; set; }
 
         private Note() { }
+
+        /// <summary>
+        /// Four parameters constructor for creating Note
+        /// </summary>
+        /// <param name="id">int noteId</param>
+        /// <param name="title">string </param>
+        /// <param name="content">string </param>
+        /// <param name="userId">int Id of user who creating Note</param>
         public Note(int id, string title, string content, int userId)
         {
             Id = id;
@@ -23,12 +34,21 @@ namespace NotesManagerLib.DataModels
             UserId = userId;
         }
 
+        /// <summary>
+        /// Two parameters constructor for creating Note
+        /// </summary>
+        /// <param name="title">string</param>
+        /// <param name="content">string</param>
         public Note(string title, string content)
         {
             Title = title;
             Content = content;
         }
 
+        /// <summary>
+        /// Text reprezentation of note
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Title + Content;

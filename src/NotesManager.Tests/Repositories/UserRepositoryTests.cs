@@ -1,5 +1,6 @@
 ﻿using NotesManagerLib;
 using NotesManagerLib.DataModels;
+using NotesManagerLib.Repositories;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,15 @@ namespace NotesManager.Tests.Repositories
     [TestFixture]
     public class UserRepositoryTests
     {
-        private readonly UserRepository _userRepository = new UserRepository();
+        private readonly IUserRepository _userRepository;
 
         public UserRepositoryTests()
         {
-            //_userRepository = new UserRepository();
+            _userRepository = new UserRepository();
         }
 
         [Test]
-        public async Task WhenCreatingUserAndCallAddMethodShouldAddUserToDb()
+        public async Task WhenCreatingUserAndCallAddMethodShouldAddUserToDbThenGetUserFromDbAndDeleteUser()
         {
             // Arrange
             var login = "TestUser";
@@ -29,6 +30,7 @@ namespace NotesManager.Tests.Repositories
             // Act
             await _userRepository.AddUserAsync(login, password);
             var user = await _userRepository.GetUserAsync(login, password);
+            await _userRepository.DeleteUserAsync(user);
 
             // Assert
             Assert.AreEqual(login, user.Login);
@@ -63,7 +65,6 @@ namespace NotesManager.Tests.Repositories
             var expectedRsult = true;
 
             // Act
-            await _userRepository.AddUserAsync(login, password);
             var result = await _userRepository.ValidateInput(login, password);
             
             // Assert

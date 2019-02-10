@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NotesManagerLib.DataModels
 {
+    /// <summary>
+    /// Class which representing User model
+    /// </summary>
     public class User
     {
         public int UserId { get; set; }
@@ -15,6 +18,12 @@ namespace NotesManagerLib.DataModels
 
         private User()
         { }
+
+        /// <summary>
+        /// Two parameters constructor for creating User
+        /// </summary>
+        /// <param name="login">string</param>
+        /// <param name="password">string </param>
         public User(string login, string password)
         {
             Login = login;

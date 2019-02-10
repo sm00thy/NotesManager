@@ -7,12 +7,21 @@ using System.Windows;
 
 namespace NotesManagerLib
 {
+    /// <summary>
+    /// Class UserRepository for communication with db
+    /// </summary>
     public class UserRepository : IUserRepository
     {
         private NoteDb _noteDb = new NoteDb();
         public UserRepository()
         { }
 
+        /// <summary>
+        /// Check if parameters arent empty string or null and if user isnt null
+        /// </summary>
+        /// <param name="login">string </param>
+        /// <param name="password">string </param>
+        /// <returns>true if both parameters arent empty or null and user isnt null, in other cases false</returns>
         public async Task<bool> ValidateInput(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
@@ -27,6 +36,12 @@ namespace NotesManagerLib
             }
         }
 
+        /// <summary>
+        /// Getting user from Db by login and password
+        /// </summary>
+        /// <param name="login">string </param>
+        /// <param name="password">string</param>
+        /// <returns>Entity of user</returns>
         public async Task<User> GetUserAsync(string login, string password)
         {
                 var user = await _noteDb.Users
@@ -35,6 +50,12 @@ namespace NotesManagerLib
                 return user;
         }
 
+        /// <summary>
+        /// Adding user to db , check if user of given parameters exist
+        /// and login and password are valid
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
         public async Task AddUserAsync(string login, string password)
         {
             var checkIfUserExist = await GetUserAsync(login, password);
@@ -53,6 +74,16 @@ namespace NotesManagerLib
                 await _noteDb.SaveChangesAsync();
                 MessageBox.Show("Register succesful", "NotesManager");
             }
+        }
+
+        /// <summary>
+        /// Delete entity from db 
+        /// </summary>
+        /// <param name="user">user to remove</param>
+        public async Task DeleteUserAsync(User user)
+        {
+            _noteDb.Users.Remove(user);
+            await _noteDb.SaveChangesAsync();
         }
     }
 }
