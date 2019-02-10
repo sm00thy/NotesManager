@@ -20,5 +20,5 @@ whole installation.
 
 ### Documentation 
 To see all documentation go to **Documentation** directory
-click on **toc.html** file 
+click on **toc.html** file or open website https://bit.ly/2DmCV48
 
