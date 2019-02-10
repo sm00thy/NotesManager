@@ -10,7 +10,13 @@ namespace NotesManagerLib.DataModels
         public NoteDb() : base("name=DefaultConnection")
         {}
 
+        /// <summary>
+        /// Notes table in db
+        /// </summary>
         public DbSet<Note> Notes { get; set; }
+        /// <summary>
+        /// Users table in db 
+        /// </summary>
         public DbSet<User> Users { get; set; }
     }
 }

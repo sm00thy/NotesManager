@@ -11,9 +11,21 @@ namespace NotesManagerLib.DataModels
     /// </summary>
     public class User
     {
+        /// <summary>
+        /// Id of user 
+        /// </summary>
         public int UserId { get; set; }
+        /// <summary>
+        /// User login 
+        /// </summary>
         public string Login { get; set; }
+        /// <summary>
+        /// User password
+        /// </summary>
         public string Password { get; set; }
+        /// <summary>
+        /// User list of notes
+        /// </summary>
         public List<Note> Notes { get; set; }
 
         private User()

@@ -11,10 +11,25 @@ namespace NotesManagerLib.DataModels
     /// </summary>
     public class Note
     {
+        /// <summary>
+        /// Note id 
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Note title string
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// Note content
+        /// </summary>
         public string Content { get; set; }
+        /// <summary>
+        /// Date
+        /// </summary>
         public DateTime DateTime { get { return DateTime.Now; } } 
+        /// <summary>
+        /// Id of user who add note
+        /// </summary>
         public int UserId { get; set; }
 
         private Note() { }
