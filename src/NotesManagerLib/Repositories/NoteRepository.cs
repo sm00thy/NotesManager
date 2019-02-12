@@ -5,36 +5,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NotesManagerLib.DataModels;
+using NotesManagerLib.ViewModel;
 
 namespace NotesManagerLib.Repositories
 {
-    class NoteRepository : INoteRepository
+    /// <summary>
+    /// Class NoteRepository for communication with db
+    /// </summary>
+    public class NoteRepository : INoteRepository
     {
-        private readonly Notedb _noteDbContext;
+        private NoteDb _noteDb = new NoteDb();
 
-        public NoteRepository(Notedb noteDb)
+        public NoteRepository()
+        {}
+
+        /// <summary>
+        /// Adding note to db
+        /// </summary>
+        /// <param name="note">adding entity</param>
+        /// <returns>Id of added entity</returns>
+        public async Task<int> AddAsync(Note note)
         {
-            _noteDbContext = noteDb;
+            _noteDb.Notes.Add(note);
+            await _noteDb.SaveChangesAsync();
+            return note.Id;
         }
 
-        public async Task AddAsync(Note note)
+        /// <summary>
+        /// Getting entity from db by Id
+        /// </summary>
+        /// <param name="noteId">int Id of entity to get</param>
+        /// <returns>Entity </returns>
+        public async Task<Note> GetNoteAsync(int noteId)
         {
-            _noteDbContext.Notes.Add(note);
-            await _noteDbContext.SaveChangesAsync();
+           return await _noteDb.Notes.
+                SingleOrDefaultAsync(x => x.Id == noteId);
         }
 
-        public async Task<IEnumerable<Note>> GetAllByUserIdAsync(int userId)
-        {
-            var notes = await _noteDbContext.Notes
-                        .Where(x => x.UserId == userId)
-                        .ToListAsync();
-            return notes;
-        }
-
+        /// <summary>
+        /// Removing entity from db
+        /// </summary>
+        /// <param name="note">Entity which will be removed</param>
         public async Task RemoveAsync(Note note)
         {
-            _noteDbContext.Notes.Remove(note);
-            await _noteDbContext.SaveChangesAsync();
+            _noteDb.Notes.Remove(note);
+            await _noteDb.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Updating entity 
+        /// </summary>
+        /// <param name="note">Entoty to update</param>
+        public async Task UpdateAsync(Note note)
+        {
+            var temp = await _noteDb.Notes
+                .SingleOrDefaultAsync(x => x.Id == note.Id);
+            temp.Title = note.Title;
+            temp.Content = note.Content;
+            await _noteDb.SaveChangesAsync();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,40 +14,15 @@ namespace NotesManager.Layouts
     /// 
     public partial class NoteList : Page
     {
-        private readonly INoteRepository _noteRepository;
         public int UserId { get; set; }
-
-        public NoteList(INoteRepository noteRepository)
-        {
-            _noteRepository = noteRepository;
-        }
 
         public NoteList(int userId)
         {
             UserId = userId;
             InitializeComponent();
-            DataContext = new NoteViewModel();
-
-            DataContext = new
-            {
-                Notes = GetNotes(UserId)
-            };
+            DataContext = new NoteViewModel(UserId);
         }
 
-        private List<Note> GetNotes(int userId)
-        {
-            List<Note> notesList = new List<Note>();
-            var db = new Notedb();
-
-            foreach (var note in db.Notes)
-            {
-                if (note.UserId == userId)
-                {
-                   notesList.Add(note);
-                }
-            }
-            return notesList;
-        }
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;

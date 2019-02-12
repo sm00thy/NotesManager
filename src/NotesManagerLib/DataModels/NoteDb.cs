@@ -2,13 +2,21 @@
 
 namespace NotesManagerLib.DataModels
 {
-    public class Notedb : DbContext
+    /// <summary>
+    /// Database init & tables set
+    /// </summary>
+    public class NoteDb : DbContext
     {
-        public Notedb() : base("name=DefaultConnection")
+        public NoteDb() : base("name=DefaultConnection")
         {}
 
+        /// <summary>
+        /// Notes table in db
+        /// </summary>
         public DbSet<Note> Notes { get; set; }
+        /// <summary>
+        /// Users table in db 
+        /// </summary>
         public DbSet<User> Users { get; set; }
-
     }
 }
